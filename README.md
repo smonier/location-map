@@ -1,70 +1,213 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 📍 Location Map & Weather Forecast React App
 
-## Available Scripts
+A React-based web application that displays a location map using Leaflet and provides real-time weather information with a 5-day forecast using the OpenWeatherMap API. It features address search powered by LocationIQ, automatic geolocation, and a responsive UI styled with Material-UI (@mui/material).
 
-In the project directory, you can run:
+---
 
-### `yarn start`
+## 📚 Table of Contents
+- [🚀 Features](#-features)  
+- [🏗️ Technologies Used](#-technologies-used)  
+- [⚙️ Installation](#️-installation)  
+- [💻 Usage](#-usage)  
+- [🌦️ Application Overview](#️-application-overview)  
+- [🧩 Project Structure](#-project-structure)  
+- [🌍 API References](#-api-references)  
+- [🔒 Environment Variables](#-environment-variables)  
+- [🎨 UI Highlights](#-ui-highlights)  
+- [🧪 Testing](#-testing)  
+- [📝 Contributing](#-contributing)  
+- [🖇️ License](#️-license)  
+- [✨ Acknowledgments](#-acknowledgments)  
+- [🔗 Contact](#-contact)  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Features
+- 🌍 Interactive map with draggable markers (Leaflet + React-Leaflet)  
+- 📍 Address search and reverse geocoding using LocationIQ  
+- ☀️ Real-time current weather details  
+- 🌦️ 5-day weather forecast with icons and detailed metrics  
+- 📱 Responsive UI using Material-UI (@mui/material)  
+- 📡 Weather updates on map click based on latitude and longitude  
+- 🌐 Localization of dates and weather conditions  
+- 🔐 API keys stored in `.env` for secure access  
 
-### `yarn test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🏗️ Technologies Used
+- React (v19.0.0)  
+- Leaflet (v1.9.4) & React-Leaflet (v5.0.0)  
+- Material-UI (v6.4.5)  
+- Axios for API requests  
+- OpenWeatherMap API  
+- LocationIQ API  
+- React-Scripts (v5.0.1)  
 
-### `yarn build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## ⚙️ Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd location-map
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-### `yarn eject`
+3. **Configure environment variables:**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   Create a `.env` file in the root directory:
+   ```plaintext
+   REACT_APP_LOCATIONIQ_API_KEY=your_locationiq_api_key
+   REACT_APP_WEATHER_API_KEY=your_openweathermap_api_key
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 💻 Usage
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. **Start the development server:**
+   ```bash
+   npm start
+   ```
+   This will run the app at [http://localhost:3000](http://localhost:3000).
 
-## Learn More
+2. **Build for production:**
+   ```bash
+   npm run build
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🌦️ Application Overview
+- On app load, the map centers on default coordinates (**Paris, France**).  
+- **Clicking on the map:**
+  - Updates the marker position.
+  - Fetches the corresponding address via LocationIQ.
+  - Displays current weather and 5-day forecast for the selected location.
+- **Entering an address in the search bar:**
+  - Re-centers the map to the searched address.
+  - Updates the weather data based on new coordinates.
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🧩 Project Structure
 
-### Analyzing the Bundle Size
+```
+location-map/
+├── public/
+│   └── index.html
+├── src/
+│   ├── Components/
+│   │   ├── LocationMap.jsx          # Interactive map with address search
+│   │   ├── WeatherForecastApp.jsx   # Displays weather info and forecast
+│   │   └── services.jsx             # API call handlers for LocationIQ & OpenWeatherMap
+│   ├── App.js                       # Main React component
+│   ├── App.css                      # Custom styles
+│   └── index.js                     # ReactDOM render
+├── .env                             # Environment variables (API keys)
+├── package.json                     # Project dependencies and scripts
+└── README.md                        # Documentation
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 🌍 API References
+- **LocationIQ Geocoding API**  
+  Used for forward (address to coordinates) and reverse (coordinates to address) geocoding.  
+  📚 [API Docs](https://locationiq.com/docs)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **OpenWeatherMap API**  
+  Fetches real-time weather data and 5-day forecasts.  
+  📚 [API Docs](https://openweathermap.org/api)
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 🔒 Environment Variables
 
-### Deployment
+Ensure you replace the placeholders with your actual API keys in the `.env` file.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```plaintext
+REACT_APP_LOCATIONIQ_API_KEY=your_locationiq_api_key
+REACT_APP_WEATHER_API_KEY=your_openweathermap_api_key
+```
 
-### `yarn build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🎨 UI Highlights
+
+- **Weather icons dynamically fetched:**
+  - Small: `https://openweathermap.org/img/wn/{icon}.png`
+  - Large: `https://openweathermap.org/img/wn/{icon}@2x.png`
+
+- **Current weather details:**
+  - Temperature, feels-like temperature, cloud conditions, humidity, UV index, pressure, wind speed, visibility.
+
+- **Forecast display:**
+  - 5-day forecast in a single row with icons above temperatures.
+  - Dates formatted as `Thu, Feb 25` according to the user’s locale.
+
+---
+
+## 🧪 Testing
+
+Run tests using:
+```bash
+npm test
+```
+Testing is powered by **@testing-library/react** and **jest**.
+
+---
+
+## 📝 Contributing
+
+Contributions are welcome!  
+
+1. Fork the repo  
+2. Create your feature branch:  
+   ```bash
+   git checkout -b feature/AmazingFeature
+   ```
+3. Commit your changes:  
+   ```bash
+   git commit -m 'Add some AmazingFeature'
+   ```
+4. Push to the branch:  
+   ```bash
+   git push origin feature/AmazingFeature
+   ```
+5. Open a **Pull Request**
+
+---
+
+## 🖇️ License
+
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+
+---
+
+## ✨ Acknowledgments
+
+- 🌍 [Leaflet](https://leafletjs.com/)  
+- 🌿 [React-Leaflet](https://react-leaflet.js.org/)  
+- 🌦️ [OpenWeatherMap](https://openweathermap.org/)  
+- 🗺️ [LocationIQ](https://locationiq.com/)  
+- 🎨 [Material-UI](https://mui.com/)
+
+---
+
+## 🔗 Contact
+
+For any queries or contributions:
+
+- 🐙 GitHub: [smonier](https://github.com/smonier)  
+- 📧 Email: [smonier@jahia.com](mailto:smonier@jahia.com)  
+
+---
+
+✨ **Happy Coding! 🚀**
