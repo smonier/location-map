@@ -95,6 +95,9 @@ A React-based web application that displays a location map using Leaflet and pro
   - Updates the weather data based on new coordinates.
 
 ---
+## Screenshots
+![picture](./assets/location-map.png)
+---
 
 ## 🧩 Project Structure
 
