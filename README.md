@@ -73,13 +73,13 @@ A React-based web application that displays a location map using Leaflet and pro
 
 1. **Start the development server:**
    ```bash
-   npm start
+   yarn start
    ```
    This will run the app at [http://localhost:3000](http://localhost:3000).
 
 2. **Build for production:**
    ```bash
-   npm run build
+   yarn build
    ```
 
 ---
@@ -107,6 +107,7 @@ location-map/
 │   └── index.html
 ├── src/
 │   ├── Components/
+│   │   ├── CurrentWeatherCard.jsx   # Displays weather info for the current day
 │   │   ├── LocationMap.jsx          # Interactive map with address search
 │   │   ├── WeatherForecastApp.jsx   # Displays weather info and forecast
 │   │   └── services.jsx             # API call handlers for LocationIQ & OpenWeatherMap
